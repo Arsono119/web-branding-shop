@@ -1,5 +1,5 @@
 {
-  "maintenanceMode": false,
+  "maintenanceMode": true,
   "currency": "IDR",
   "currencySymbol": "Rp"
 }
