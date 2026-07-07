@@ -1,7 +1,7 @@
 {
-  "name": "NamaBrand",
+  "name": "Lil_Mart",
   "tagline": "Gaya Minimalis, Kualitas Maksimal",
-  "logo": "",
+  "logo": "https://raw.githubusercontent.com/Arsono119/web-branding-shop/main/public/images/uploads/1783443020337-tljhxs.png",
   "favicon": "",
   "hero": {
     "headline": "Temukan Gaya Minimalis",
@@ -10,7 +10,12 @@
   },
   "about": {
     "story": "Kami adalah brand lokal yang berkomitmen menghadirkan produk berkualitas dengan desain minimalis modern. Setiap produk dibuat dengan perhatian detail dan bahan pilihan.",
-    "values": ["Kualitas Premium", "Desain Minimalis", "Brand Lokal", "Sustainable"]
+    "values": [
+      "Kualitas Premium",
+      "Desain Minimalis",
+      "Brand Lokal",
+      "Sustainable"
+    ]
   },
   "payment": {
     "qrImage": "",
@@ -32,6 +37,6 @@
   "seo": {
     "title": "NamaBrand - Brand Lokal Premium",
     "description": "Brand lokal premium dengan desain minimalis modern.",
-    "ogImage": ""
+    "ogImage": "https://raw.githubusercontent.com/Arsono119/web-branding-shop/main/public/images/uploads/1783443034181-cb6jqr.png"
   }
 }
