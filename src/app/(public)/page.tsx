@@ -4,6 +4,8 @@ import { ProductCard } from '@/components/product/ProductCard';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { Button } from '@/components/ui/Button';
 
+export const dynamic = 'force-dynamic';
+
 export default function HomePage() {
   const brand = getBrand();
   const products = getProducts().filter((p) => p.isActive).slice(0, 6);

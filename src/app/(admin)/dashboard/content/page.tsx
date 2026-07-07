@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Card } from '@/components/ui/Card';
 import { Toast } from '@/components/ui/Toast';
+import { ImageUpload } from '@/components/ui/ImageUpload';
 
 export default function AdminContentPage() {
   const [brand, setBrand] = useState<BrandInfo | null>(null);
@@ -40,7 +41,7 @@ export default function AdminContentPage() {
         <div className="space-y-4">
           <Input label="Nama Brand" value={brand.name} onChange={(e) => setBrand({ ...brand, name: e.target.value })} />
           <Input label="Tagline" value={brand.tagline} onChange={(e) => setBrand({ ...brand, tagline: e.target.value })} />
-          <Input label="Logo URL" value={brand.logo} onChange={(e) => setBrand({ ...brand, logo: e.target.value })} placeholder="/images/logo.png" />
+          <ImageUpload label="Logo" value={brand.logo} onChange={(url) => setBrand({ ...brand, logo: url })} placeholder="/images/logo.png" />
         </div>
       </Card>
 
@@ -64,7 +65,7 @@ export default function AdminContentPage() {
       <Card>
         <h2 className="font-semibold text-foreground mb-4">Pembayaran</h2>
         <div className="space-y-4">
-          <Input label="QR Image URL" value={brand.payment.qrImage} onChange={(e) => setBrand({ ...brand, payment: { ...brand.payment, qrImage: e.target.value } })} />
+          <ImageUpload label="QR / Gambar Pembayaran" value={brand.payment.qrImage} onChange={(url) => setBrand({ ...brand, payment: { ...brand.payment, qrImage: url } })} />
           <div className="grid grid-cols-2 gap-4">
             <Input label="Bank" value={brand.payment.bank} onChange={(e) => setBrand({ ...brand, payment: { ...brand.payment, bank: e.target.value } })} />
             <Input label="No. VA / Rekening" value={brand.payment.vaNumber} onChange={(e) => setBrand({ ...brand, payment: { ...brand.payment, vaNumber: e.target.value } })} />
@@ -99,7 +100,7 @@ export default function AdminContentPage() {
         <div className="space-y-4">
           <Input label="Title" value={brand.seo.title} onChange={(e) => setBrand({ ...brand, seo: { ...brand.seo, title: e.target.value } })} />
           <Textarea label="Description" value={brand.seo.description} onChange={(e) => setBrand({ ...brand, seo: { ...brand.seo, description: e.target.value } })} rows={2} />
-          <Input label="OG Image URL" value={brand.seo.ogImage} onChange={(e) => setBrand({ ...brand, seo: { ...brand.seo, ogImage: e.target.value } })} />
+          <ImageUpload label="OG Image (Social Share)" value={brand.seo.ogImage} onChange={(url) => setBrand({ ...brand, seo: { ...brand.seo, ogImage: url } })} />
         </div>
       </Card>
 

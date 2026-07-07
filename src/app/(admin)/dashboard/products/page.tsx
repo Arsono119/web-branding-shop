@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 import { Modal } from '@/components/ui/Modal';
 import { Toast } from '@/components/ui/Toast';
+import { ImageUpload } from '@/components/ui/ImageUpload';
 
 function formatRupiah(amount: number): string {
   return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);
@@ -38,7 +39,7 @@ export default function AdminProductsPage() {
   const [formSizes, setFormSizes] = useState('S,M,L,XL');
   const [formColors, setFormColors] = useState('');
   const [formTags, setFormTags] = useState('');
-  const [formImages, setFormImages] = useState('/images/products/placeholder-1.jpg');
+  const [formImages, setFormImages] = useState<string[]>([]);
   const [formStock, setFormStock] = useState('10');
 
   const loadData = () => {
@@ -57,7 +58,7 @@ export default function AdminProductsPage() {
     setEditingProduct(null);
     setFormName(''); setFormPrice(''); setFormOriginalPrice(''); setFormDescription('');
     setFormCategory(activeCategories[0]?.slug || ''); setFormSizes('S,M,L,XL');
-    setFormColors(''); setFormTags(''); setFormImages('/images/products/placeholder-1.jpg'); setFormStock('10');
+    setFormColors(''); setFormTags(''); setFormImages([]); setFormStock('10');
     setShowModal(true);
   };
 
@@ -67,7 +68,8 @@ export default function AdminProductsPage() {
     setFormOriginalPrice(product.originalPrice ? String(product.originalPrice) : '');
     setFormDescription(product.description); setFormCategory(product.category.toLowerCase());
     setFormSizes(product.sizes.join(',')); setFormColors(product.colors.join(','));
-    setFormTags(product.tags.join(',')); setFormImages(product.images.join(','));
+    setFormTags(product.tags.join(','));
+    setFormImages([...product.images]);
     setFormStock(String(Object.values(product.stock)[0] || 10));
     setShowModal(true);
   };
@@ -79,39 +81,24 @@ export default function AdminProductsPage() {
       stock[s] = parseInt(formStock) || 0;
     });
 
-    if (editingProduct) {
-      await fetch('/api/products', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: editingProduct.id, name: formName, slug, price: parseInt(formPrice) || 0,
-          originalPrice: formOriginalPrice ? parseInt(formOriginalPrice) : undefined,
-          description: formDescription, category: formCategory,
-          sizes: formSizes.split(',').map((s) => s.trim()).filter(Boolean),
-          colors: formColors.split(',').map((c) => c.trim()).filter(Boolean),
-          tags: formTags.split(',').map((t) => t.trim()).filter(Boolean),
-          images: formImages.split(',').map((i) => i.trim()).filter(Boolean),
-          stock,
-        }),
-      });
-      setToast('Produk berhasil diupdate!');
-    } else {
-      await fetch('/api/products', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: generateId('prod'), name: formName, slug, price: parseInt(formPrice) || 0,
-          originalPrice: formOriginalPrice ? parseInt(formOriginalPrice) : undefined,
-          description: formDescription, category: formCategory,
-          sizes: formSizes.split(',').map((s) => s.trim()).filter(Boolean),
-          colors: formColors.split(',').map((c) => c.trim()).filter(Boolean),
-          tags: formTags.split(',').map((t) => t.trim()).filter(Boolean),
-          images: formImages.split(',').map((i) => i.trim()).filter(Boolean),
-          stock, isActive: true, createdAt: new Date().toISOString(),
-        }),
-      });
-      setToast('Produk berhasil ditambahkan!');
-    }
+    const payload = {
+      ...(editingProduct ? { id: editingProduct.id } : { id: generateId('prod'), isActive: true, createdAt: new Date().toISOString() }),
+      name: formName, slug, price: parseInt(formPrice) || 0,
+      originalPrice: formOriginalPrice ? parseInt(formOriginalPrice) : undefined,
+      description: formDescription, category: formCategory,
+      sizes: formSizes.split(',').map((s) => s.trim()).filter(Boolean),
+      colors: formColors.split(',').map((c) => c.trim()).filter(Boolean),
+      tags: formTags.split(',').map((t) => t.trim()).filter(Boolean),
+      images: formImages.filter(Boolean),
+      stock,
+    };
+
+    await fetch('/api/products', {
+      method: editingProduct ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    setToast(editingProduct ? 'Produk berhasil diupdate!' : 'Produk berhasil ditambahkan!');
     setShowModal(false);
     loadData();
   };
@@ -194,7 +181,33 @@ export default function AdminProductsPage() {
           <Input label="Sizes (koma)" value={formSizes} onChange={(e) => setFormSizes(e.target.value)} placeholder="S,M,L,XL" />
           <Input label="Warna (koma)" value={formColors} onChange={(e) => setFormColors(e.target.value)} placeholder="Hitam,Putih" />
           <Input label="Tags (koma)" value={formTags} onChange={(e) => setFormTags(e.target.value)} placeholder="bestseller,premium" />
-          <Input label="URL Gambar (koma)" value={formImages} onChange={(e) => setFormImages(e.target.value)} />
+
+          {/* Multiple Image Upload */}
+          <div>
+            <label className="block text-sm font-medium text-foreground mb-1.5">Gambar Produk</label>
+            <div className="space-y-3">
+              {formImages.map((img, idx) => (
+                <div key={idx} className="relative">
+                  <ImageUpload
+                    value={img}
+                    onChange={(url) => {
+                      const updated = [...formImages];
+                      updated[idx] = url;
+                      setFormImages(updated);
+                    }}
+                  />
+                </div>
+              ))}
+              {formImages.length < 6 && (
+                <button
+                  onClick={() => setFormImages([...formImages, ''])}
+                  className="w-full py-3 border-2 border-dashed border-brand-300 rounded-xl text-sm font-medium text-brand-600 hover:bg-brand-50 transition-colors"
+                >
+                  + Tambah Gambar
+                </button>
+              )}
+            </div>
+          </div>
         </div>
         <div className="flex justify-end gap-3 mt-6">
           <Button variant="secondary" onClick={() => setShowModal(false)}>Batal</Button>

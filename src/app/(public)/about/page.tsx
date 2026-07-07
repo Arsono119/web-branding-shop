@@ -1,6 +1,8 @@
 import { getBrand } from '@/lib/data';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 
+export const dynamic = 'force-dynamic';
+
 export default function AboutPage() {
   const brand = getBrand();
 

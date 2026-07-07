@@ -5,10 +5,8 @@ import { Button } from '@/components/ui/Button';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { AddToCartButton } from '@/components/checkout/AddToCartButton';
 
-export function generateStaticParams() {
-  const products = getProducts().filter((p) => p.isActive);
-  return products.map((p) => ({ slug: p.slug }));
-}
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
