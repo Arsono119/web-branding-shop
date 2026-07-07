@@ -1,0 +1,18 @@
+[
+  {
+    "id": "prod-001",
+    "slug": "kaos-premium-hitam",
+    "name": "Kaos Premium Hitam",
+    "price": 199000,
+    "originalPrice": 249000,
+    "images": ["/images/products/placeholder-1.jpg"],
+    "description": "Kaos 100% cotton combed 30s dengan desain minimalis. Nyaman dipakai sehari-hari.",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["Hitam"],
+    "stock": { "S": 10, "M": 15, "L": 12, "XL": 8 },
+    "category": "Kaos",
+    "tags": ["bestseller", "premium"],
+    "isActive": true,
+    "createdAt": "2025-01-15T10:00:00Z"
+  }
+]

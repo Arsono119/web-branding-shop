@@ -1,0 +1,37 @@
+{
+  "name": "NamaBrand",
+  "tagline": "Gaya Minimalis, Kualitas Maksimal",
+  "logo": "",
+  "favicon": "",
+  "hero": {
+    "headline": "Temukan Gaya Minimalis",
+    "subtext": "Brand lokal premium untuk kamu yang suka desain clean dan kualitas terbaik.",
+    "cta": "Belanja Sekarang"
+  },
+  "about": {
+    "story": "Kami adalah brand lokal yang berkomitmen menghadirkan produk berkualitas dengan desain minimalis modern. Setiap produk dibuat dengan perhatian detail dan bahan pilihan.",
+    "values": ["Kualitas Premium", "Desain Minimalis", "Brand Lokal", "Sustainable"]
+  },
+  "payment": {
+    "qrImage": "",
+    "vaNumber": "1234567890",
+    "bank": "BCA",
+    "accountName": "NamaBrand"
+  },
+  "shipping": {
+    "flatRate": 15000,
+    "codNote": "Terimakasih sudah belanja di sini!",
+    "freeShippingMin": 500000
+  },
+  "contact": {
+    "ig": "@namabrand",
+    "wa": "6281234567890",
+    "email": "hi@namabrand.com",
+    "address": "Jakarta, Indonesia"
+  },
+  "seo": {
+    "title": "NamaBrand - Brand Lokal Premium",
+    "description": "Brand lokal premium dengan desain minimalis modern.",
+    "ogImage": ""
+  }
+}

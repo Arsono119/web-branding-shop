@@ -1,0 +1,5 @@
+[
+  { "id": "cat-001", "name": "Kaos", "slug": "kaos", "isActive": true, "order": 1 },
+  { "id": "cat-002", "name": "Hoodie", "slug": "hoodie", "isActive": true, "order": 2 },
+  { "id": "cat-003", "name": "Accessories", "slug": "accessories", "isActive": true, "order": 3 }
+]
