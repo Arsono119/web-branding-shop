@@ -5,14 +5,61 @@
     "name": "Kaos Premium Hitam",
     "price": 199000,
     "originalPrice": 249000,
-    "images": ["/images/products/placeholder-1.jpg"],
+    "images": [
+      "/images/products/placeholder-1.jpg"
+    ],
     "description": "Kaos 100% cotton combed 30s dengan desain minimalis. Nyaman dipakai sehari-hari.",
-    "sizes": ["S", "M", "L", "XL"],
-    "colors": ["Hitam"],
-    "stock": { "S": 10, "M": 15, "L": 12, "XL": 8 },
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Hitam"
+    ],
+    "stock": {
+      "S": 10,
+      "M": 15,
+      "L": 12,
+      "XL": 8
+    },
     "category": "Kaos",
-    "tags": ["bestseller", "premium"],
+    "tags": [
+      "bestseller",
+      "premium"
+    ],
     "isActive": true,
     "createdAt": "2025-01-15T10:00:00Z"
+  },
+  {
+    "id": "prod-1783442566407-nkedg40j2",
+    "isActive": true,
+    "createdAt": "2026-07-07T16:42:46.407Z",
+    "name": "Kaos Premium Lil",
+    "slug": "kaos-premium-lil",
+    "price": 56000,
+    "originalPrice": 100000,
+    "description": "Kaos dengan kualitas premium",
+    "category": "kaos",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Abu Abu"
+    ],
+    "tags": [],
+    "images": [
+      "/home/lil-a/Downloads/iloveimg-compressed"
+    ],
+    "stock": {
+      "S": 10,
+      "M": 10,
+      "L": 10,
+      "XL": 10
+    }
   }
 ]
