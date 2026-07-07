@@ -61,5 +61,26 @@
       "L": 10,
       "XL": 10
     }
+  },
+  {
+    "id": "test-001",
+    "name": "Test Product",
+    "slug": "test-product",
+    "description": "Test",
+    "price": 100000,
+    "category": "Kaos",
+    "images": [],
+    "sizes": [
+      "M"
+    ],
+    "colors": [
+      "Hitam"
+    ],
+    "stock": {
+      "M-Hitam": 5
+    },
+    "tags": [],
+    "isActive": true,
+    "createdAt": "2026-07-07"
   }
 ]
