@@ -61,5 +61,35 @@
       "L": 10,
       "XL": 10
     }
+  },
+  {
+    "id": "prod-1783443103747-9yp4bs1kp",
+    "isActive": true,
+    "createdAt": "2026-07-07T16:51:43.747Z",
+    "name": "kaos Premium Vanila",
+    "slug": "kaos-premium-vanila",
+    "price": 52000,
+    "originalPrice": 100000,
+    "description": "Kaos Premium Edisi terbatas",
+    "category": "kaos",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Vanila"
+    ],
+    "tags": [],
+    "images": [
+      "https://raw.githubusercontent.com/Arsono119/web-branding-shop/main/public/images/uploads/1783443100594-r06y2c.png"
+    ],
+    "stock": {
+      "S": 10,
+      "M": 10,
+      "L": 10,
+      "XL": 10
+    }
   }
 ]
